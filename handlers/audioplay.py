@@ -26,7 +26,7 @@ from helpers.gets import get_url, get_file_name
 @Client.on_message(command(["stream", f"stream@{BOT_USERNAME}"]) & other_filters)
 async def stream(_, message: Message):
 
-    lel = await message.reply("🔁 **processing** sound...")
+    lel = await message.reply("⚡")
     costumer = message.from_user.mention
 
     keyboard = InlineKeyboardMarkup(
@@ -64,7 +64,7 @@ async def stream(_, message: Message):
     if message.chat.id in callsmusic.pytgcalls.active_calls:
         position = await queues.put(message.chat.id, file=file_path)
         await message.reply_photo(
-            photo="https://telegra.ph/file/36343b9d4742efe0b09cd.jpg",
+            photo="https://telegra.ph/file/f0a306c4e2eee9b2e1d77.jpg",
             caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** {title[:35]}\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {costumer}",
             reply_markup=keyboard,
         )
@@ -72,7 +72,7 @@ async def stream(_, message: Message):
     else:
         callsmusic.pytgcalls.join_group_call(message.chat.id, file_path)
         await message.reply_photo(
-            photo="https://telegra.ph/file/224178328de996a82507f.jpg",
+            photo="https://telegra.ph/file/f0a306c4e2eee9b2e1d77.jpg",
             caption=f"🏷 **Name:** {title[:35]}\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
                    +f"🎧 **Request by:** {costumer}",
             reply_markup=keyboard,

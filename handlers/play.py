@@ -191,7 +191,7 @@ async def settings(client, message):
         else:
             await message.reply(stats, reply_markup=r_ply("play"))
     else:
-        await message.reply("😕 **voice chat not found**\n\n» please turn on the voice chat first")
+        await message.reply("🔴 **voice chat not found**\n\n» please turn on the voice chat first")
 
 
 @Client.on_message(
@@ -438,9 +438,9 @@ async def play(_, message: Message):
     global que
     global useer
     if message.chat.id in DISABLED_GROUPS:
-        await message.reply("😕 **Musicplayer is Disable!**\n\n» Ask admin for Enable the Musicplayer for this group.")
+        await message.reply("🔴 **Musicplayer is Disable!**\n\n» Ask admin for Enable the Musicplayer for this group.")
         return
-    lel = await message.reply("🔎 **Finding song**")
+    lel = await message.reply("💫")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -545,7 +545,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🔎 **Finding song**")
+        await lel.edit("💫")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -586,19 +586,19 @@ async def play(_, message: Message):
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
 
         try:
-          results = YoutubeSearch(query, max_results=6).to_dict()
+          results = YoutubeSearch(query, max_results=5).to_dict()
         except:
           await lel.edit("Give me something to play")
         # Looks like hell. Aren't it?? FUCK OFF
         try:
-            toxxt = "\n"
+            toxxt = "**__Choose the song you want to play__**\n\n"
             j = 0
             useer=user_name
-            emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣"]
+            emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"]
             while j < 5:
-                toxxt += f"{emojilist[j]} [{results[j]['title'][:37]}...](https://youtube.com{results[j]['url_suffix']})\n"
-                toxxt += f" ├ 💡 [More Information](https://youtube.com{results[j]['url_suffix']})\n"
-                toxxt += f" └ ⚡ __Powered by {bn} AI__\n\n"
+                toxxt += f"{emojilist[j]} [{results[j]['title'][:24]}...](https://youtube.com{results[j]['url_suffix']})\n"
+                toxxt += f" ├ 💡 Duration - {results[j]['duration']}\n"
+                toxxt += f" └ ⚡ __Powered by [{bn}](https://t.me/{BOT_USERNAME})__\n\n"
                 j += 1            
             keyboard = InlineKeyboardMarkup(
                 [
@@ -611,19 +611,10 @@ async def play(_, message: Message):
                         InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}|{user_id}'),
                         InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}')
                     ],
-                    [
-                        InlineKeyboardButton("6️⃣", callback_data=f'plll 5|{query}|{user_id}')
-                    ],
                     [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
                 ]
             )
-            await message.reply_photo(
-                photo="https://telegra.ph/file/16ac692fb20e4e08c9b99.png",
-                caption=toxxt,
-                reply_markup=keyboard
-            )
-
-            await lel.delete()
+            await lel.edit(toxxt,reply_markup=keyboard,disable_web_page_preview=True)
             # WHY PEOPLE ALWAYS LOVE PORN ?? (A point to think)
             return
             # KONTOOOOOLLLLLLLLLLL
@@ -686,7 +677,7 @@ async def play(_, message: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            message.reply("😕 **voice chat not found**\n\n» please turn on the voice chat first")
+            message.reply("🔴 **voice chat not found**\n\n» please turn on the voice chat first")
             return
         await message.reply_photo(
             photo="final.png",
@@ -713,7 +704,7 @@ async def lol_cb(b, cb):
     if cb.from_user.id != useer_id:
         await cb.answer("💡 this is not for you !", show_alert=True)
         return
-    # await cb.message.edit("🔁 **Processing**")
+    await cb.message.edit("⚡")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -804,9 +795,9 @@ async def lol_cb(b, cb):
 async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
-        await message.reply("😕 **Musicplayer is Disable!**\n\n» Ask admin for Enable the Musicplayer for this group.")
+        await message.reply("🔴 **Musicplayer is Disable!**\n\n» Ask admin for Enable the Musicplayer for this group.")
         return
-    lel = await message.reply("🔎 **Finding song**")
+    lel = await message.reply("💫")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -859,6 +850,7 @@ async def ytplay(_, message: Message):
             f"<i>{user.first_name} was banned in this group, ask admin to unban @{ASSISTANT_NAME} manually.</i>"
         )
         return
+     await lel.edit("🔄 **Processing**")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
@@ -867,7 +859,7 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    await lel.edit("🔁 **Processing**")
+    await lel.edit("⚡")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()

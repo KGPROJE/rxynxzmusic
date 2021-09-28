@@ -34,9 +34,18 @@ async def _human_time_duration(seconds):
 @Client.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""<b>👋 **Hello {message.from_user.mention}** ❗ \n
-**[{BOT_NAME}](https://t.me/{BOT_USERNAME}) Is a bot designed to play music in your voice chat groups!**
-**To see some commands for using this bot, click » /help**
+        f"""<b>⎾{bn}⏌
+─────────────────
+sᴀʏᴀ ᴅɪʙᴜᴀᴛ ᴋʜᴜsᴜs ᴏʟᴇʜ [{OWNER_NAME}](https://t.me/{OWNER_NAME}) ᴜɴᴛᴜᴋ ᴍᴇᴍᴜᴛᴀʀᴋᴀɴ ʟᴀɢᴜ ᴅɪ ᴏʙʀᴏʟᴀɴ sᴜᴀʀᴀ ᴅᴀɴ ᴍᴇɴᴊɪɴᴀᴋᴀɴ ᴊᴜᴛᴀᴀɴ ᴊᴀᴍᴇᴛ ᴛᴇʟᴇɢʀᴀᴍ\nsᴀʏᴀ ᴊᴜɢᴀ ᴍᴇᴍᴘᴜɴʏᴀɪ ʙᴀɴʏᴀᴋ ғɪᴛᴜʀ sᴇᴘᴇʀᴛɪ:
+┌────────────────
+│ᴍᴇᴍᴜᴛᴀʀ ʟᴀɢᴜ
+│ᴍᴇɴᴅᴏᴡɴʟᴏᴀᴅ ʟᴀɢᴜ
+│ᴍᴇɴᴊɪɴᴀᴋᴀɴ ᴊᴜᴛᴀᴀɴ ᴊᴀᴍᴇᴛ ᴛᴇʟᴇɢʀᴀᴍ
+├────────────────
+│▪ ᴍᴀɴᴀɢᴇᴅ ᴡɪᴛʜ ʙʏ : [{OWNER_NAME}](https://t.me/{OWNER_NAME})
+│▪ ᴅᴇᴠᴇʟᴏᴘᴇʀ : [ʀᴀᴋᴀ](https://t.me/rakaaanjayy)
+└─────────────────
+▼ ᴋʟɪᴄᴋ ᴛᴏᴍʙᴏʟ ᴅɪʙᴀᴡᴀʜ ʙɪᴀʀ ɢᴀ ʙᴇɢᴏ!
 </b>""",
         reply_markup=InlineKeyboardMarkup(
             [ 
@@ -45,14 +54,19 @@ async def cbstart(_, query: CallbackQuery):
                         "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ​ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton(
-                        "ʀᴇᴘᴏ​​", url="https://github.com/KennedyProject/KennedyXMusic"
+                        "💬 sᴜᴘᴘᴏʀᴛ​​", url="https:/t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{GROUP_SUPPORT}")
+                        "ᴜᴘᴅᴀᴛᴇs 📢", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],[
                     InlineKeyboardButton(
-                        "ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ​ ❓​", callback_data="cbguide"
-                    )
+                        "🔥 ᴀʙᴏᴜᴛ 🔥", callback_data="cbabout")
+                ],[
+                    InlineKeyboardButton(
+                        "🌟 ɢɪᴛʜᴜʙ​​ 🌟", url="https://github.com/zeinzo"
+                    ),
+                    InlineKeyboardButton(
+                        "ʙᴀɴᴛᴜᴀɴ ❓", callback_data="cbguide")
                 ]
             ]
         ),
@@ -89,10 +103,10 @@ __{bn} licensed under the GNU General Public License v.3.0__
             [
                 [
                     InlineKeyboardButton(
-                        "sᴏᴜʀᴄᴇ​​", url="https://github.com/KennedyProject/KennedyXMusic"
+                        "sᴏᴜʀᴄᴇ​​", url="https://github.com/zeinzo"
                     ),
                     InlineKeyboardButton(
-                        "ʙᴀᴄᴋ​", callback_data="cbadvanced"
+                        "ʙᴀᴄᴋ​", callback_data="cbstart"
                     )
                 ]
             ]
