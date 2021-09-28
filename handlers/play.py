@@ -191,7 +191,7 @@ async def settings(client, message):
         else:
             await message.reply(stats, reply_markup=r_ply("play"))
     else:
-        await message.reply("😕 **voice chat not found**\n\n» please turn on the voice chat first")
+        await message.reply("🔴 **voice chat not found**\n\n» please turn on the voice chat first")
 
 
 @Client.on_message(
@@ -438,9 +438,9 @@ async def play(_, message: Message):
     global que
     global useer
     if message.chat.id in DISABLED_GROUPS:
-        await message.reply("😕 **Musicplayer is Disable!**\n\n» Ask admin for Enable the Musicplayer for this group.")
+        await message.reply("🔴 **Musicplayer is Disable!**\n\n» Ask admin for Enable the Musicplayer for this group.")
         return
-    lel = await message.reply("🔎 **Finding song**")
+    lel = await message.reply("💫")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -545,7 +545,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🔎 **Finding song**")
+        await lel.edit("💫")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -677,7 +677,7 @@ async def play(_, message: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            message.reply("😕 **voice chat not found**\n\n» please turn on the voice chat first")
+            message.reply("🔴 **voice chat not found**\n\n» please turn on the voice chat first")
             return
         await message.reply_photo(
             photo="final.png",
@@ -704,7 +704,7 @@ async def lol_cb(b, cb):
     if cb.from_user.id != useer_id:
         await cb.answer("💡 this is not for you !", show_alert=True)
         return
-    await cb.message.edit("🔁 **Processing**")
+    await cb.message.edit("⚡")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -795,9 +795,9 @@ async def lol_cb(b, cb):
 async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
-        await message.reply("😕 **Musicplayer is Disable!**\n\n» Ask admin for Enable the Musicplayer for this group.")
+        await message.reply("🔴 **Musicplayer is Disable!**\n\n» Ask admin for Enable the Musicplayer for this group.")
         return
-    lel = await message.reply("🔎 **Finding song**")
+    lel = await message.reply("💫")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -850,7 +850,7 @@ async def ytplay(_, message: Message):
             f"<i>{user.first_name} was banned in this group, ask admin to unban @{ASSISTANT_NAME} manually.</i>"
         )
         return
-    # await lel.edit("🔄 **Processing**")
+     await lel.edit("🔄 **Processing**")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
@@ -859,7 +859,7 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    await lel.edit("🔁 **Processing**")
+    await lel.edit("⚡")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
